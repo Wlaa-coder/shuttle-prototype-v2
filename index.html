@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/png;base64,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">
+  <title>University Shuttle – Campus bus status</title>
+  <!-- Fonts (SPEC §3b): Inter for English, Noto Sans Arabic for Arabic. Stylesheet only, no key, no script. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
+  <style>
+:root{
+  --text:#1A1A1A; --text-2:#4A4F55; --canvas:#F2F5F8; --surface:#FFFFFF;
+  --dir-g2b:#6B2E6E; --dir-b2g:#0B4F6C; --neutral:#3A3F45;
+  --ok-text:#1B6E3C; --ok-bg:#E6F4EA; --late-text:#7A4B00; --late-bg:#FFF3D6;
+  --left-text:#3A3F45; --left-bg:#ECEEF0; --err-text:#8A1F1F; --err-bg:#FDECEA;
+  --dir:var(--dir-g2b); --tap:44px; --shadow:0 8px 22px rgba(15,40,60,.12);
+}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{margin:0;background:var(--canvas);color:var(--text);font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;line-height:1.5}
+:lang(ar) body,body:lang(ar){font-family:"Noto Sans Arabic",system-ui,Tahoma,Arial,sans-serif}
+body.dir-g2b{--dir:var(--dir-g2b)} body.dir-b2g{--dir:var(--dir-b2g)}
+.screen{max-width:480px;margin:0 auto;min-height:100vh;background:var(--canvas)}
+.screen[hidden]{display:none}
+button:focus-visible,label:focus-visible{outline:3px solid #000;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+h1[tabindex="-1"]:focus{outline:none}
+.icon{width:24px;height:24px;flex:0 0 auto}
+
+/* ---------- S1 ---------- */
+.s1-head{background:linear-gradient(135deg,var(--dir-b2g) 0%,var(--dir-g2b) 100%);color:#fff;padding:22px 20px 84px;border-radius:0 0 32px 32px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:46px;height:46px;border-radius:14px;background:#fff;color:var(--dir-b2g);display:grid;place-items:center}
+.logo .icon{width:28px;height:28px}
+.brand-name{display:block;font-weight:800;font-size:1.2rem;line-height:1.2}
+.brand-sub{display:block;font-size:1rem}
+.hero-card{margin:-58px 16px 0;background:var(--surface);border-radius:24px;padding:18px 20px 20px;box-shadow:var(--shadow);position:relative}
+.hero-route{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.node{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;flex:none}
+.node-g{background:var(--dir-g2b)} .node-b{background:var(--dir-b2g)}
+.hero-line{flex:1;position:relative;height:44px}
+.hero-line::before{content:"";position:absolute;inset-inline:0;top:50%;border-top:3px dashed #7d858d}
+.hero-line .icon{position:absolute;top:50%;inset-inline-start:50%;transform:translate(-50%,-50%);background:var(--surface);padding:0 6px;width:36px;height:30px;color:var(--neutral)}
+[dir="rtl"] .hero-line .icon{transform:translate(50%,-50%)}
+.hero-card h1{margin:0 0 4px;font-size:1.65rem;line-height:1.25;font-weight:800}
+.lead{margin:0;color:var(--text-2)}
+.content{padding:20px 16px 32px}
+.direction-list{display:flex;flex-direction:column;gap:16px}
+.direction-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:96px;padding:16px;border:0;border-radius:22px;color:#fff;font:inherit;text-align:start;cursor:pointer;box-shadow:var(--shadow)}
+.direction-btn.dir-g2b{background:var(--dir-g2b)} .direction-btn.dir-b2g{background:var(--dir-b2g)}
+.pair{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none}
+.pair i{font-style:normal;width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;font-weight:800}
+.dir-g2b .pair i:first-child,.dir-b2g .pair i:last-child{color:var(--dir-g2b)}
+.dir-g2b .pair i:last-child,.dir-b2g .pair i:first-child{color:var(--dir-b2g)}
+.pair .icon{width:16px;height:16px}
+.d-txt{flex:1;display:flex;flex-direction:column;gap:2px}
+.d-txt small{display:block;font-size:1rem}
+.d-txt strong{font-size:1.15rem;font-weight:800;line-height:1.25}
+.chev{width:28px;height:28px}
+[dir="rtl"] .chev{transform:scaleX(-1)}
+
+/* ---------- S2 ---------- */
+.logo-img{width:48px;height:48px;border-radius:14px;flex:none}
+.topbar{display:flex;flex-direction:column;gap:8px;padding:12px 16px 4px;background:var(--dir);color:#fff}
+.tb-row{display:flex;align-items:center;gap:8px}
+.topbar h1{font-size:1.5rem;margin:0;font-weight:800}
+.icon-btn{display:inline-flex;align-items:center;gap:4px;min-width:var(--tap);min-height:var(--tap);padding:0 10px;border:2px solid #fff;border-radius:999px;background:transparent;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+[dir="rtl"] .back-btn .icon{transform:scaleX(-1)}
+.direction-bar{display:flex;align-items:center;gap:10px;padding:6px 16px 64px;background:var(--dir);color:#fff;font-weight:700;border-radius:0 0 30px 30px}
+.has-band .content{margin-top:-48px;padding-top:0}
+.status-card{padding:20px;border-radius:24px;border:2px solid currentColor;box-shadow:var(--shadow)}
+.status-head{display:flex;align-items:center;gap:12px}
+.status-icon{width:52px;height:52px;padding:11px;border-radius:50%;background:#fff}
+.status-heading{margin:0;font-size:1.75rem;font-weight:800;line-height:1.2}
+.status-lines{list-style:none;margin:14px 0 0;padding:0;font-size:1.125rem}
+.status-lines li{margin:4px 0}
+.status-updated{margin:12px 0 0;font-size:1rem;font-weight:600}
+.state-here,.state-arriving{color:var(--ok-text);background:var(--ok-bg)}
+.state-delayed{color:var(--late-text);background:var(--late-bg)}
+.state-left{color:var(--left-text);background:var(--left-bg)}
+.state-unavailable{color:var(--err-text);background:var(--err-bg)}
+
+.route-card{margin-top:16px;background:var(--surface);border-radius:24px;padding:8px 20px 12px;box-shadow:var(--shadow)}
+.route{position:relative;height:112px;margin:8px 12px 0}
+.route-track{position:absolute;inset-inline:0;top:56px;height:8px;border-radius:4px;background:var(--dir)}
+.route-stop{position:absolute;top:49px;display:flex;flex-direction:column;align-items:center}
+.route-stop-from{inset-inline-start:20%;transform:translateX(-50%)}
+.route-stop-to{inset-inline-end:-11px;align-items:flex-end}
+[dir="rtl"] .route-stop-from{transform:translateX(50%)}
+.route-dot{width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--dir)}
+.route-label{margin-top:8px;font-size:1rem;font-weight:600;color:var(--text);white-space:nowrap}
+.route-bus{position:absolute;top:38px;inset-inline-start:20%;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:var(--dir);color:#fff;display:grid;place-items:center;box-shadow:0 0 0 4px #fff}
+[dir="rtl"] .route-bus{transform:translateX(50%)}
+.route-bus .icon{width:26px;height:26px}
+.route.no-location .route-track{background:repeating-linear-gradient(90deg,#4A4F55 0 10px,transparent 10px 18px)}
+.route.no-location .route-bus{display:none}
+
+.alert-banner{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;border-radius:18px;background:var(--neutral);color:#fff;font-weight:700}
+.alert-banner[hidden]{display:none}
+
+.controls{margin-top:16px;display:flex;flex-direction:column;gap:14px;background:var(--surface);border-radius:24px;padding:18px 20px;box-shadow:var(--shadow)}
+.control-row{display:flex;align-items:center;gap:14px}
+.switch{min-width:60px;min-height:var(--tap);padding:0;border:0;background:transparent;cursor:pointer}
+.switch-track{display:block;position:relative;width:56px;height:32px;border-radius:16px;background:#fff;border:2px solid var(--neutral)}
+.switch-thumb{position:absolute;top:3px;inset-inline-start:3px;width:22px;height:22px;border-radius:50%;background:var(--neutral)}
+.switch[aria-checked="true"] .switch-track{background:var(--neutral)}
+.switch[aria-checked="true"] .switch-thumb{inset-inline-start:27px;background:#fff}
+.switch-label{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--text);font-weight:600}
+.switch-label .icon{color:var(--neutral)}
+.alert-confirm{margin:0;color:var(--text-2)}
+.alert-confirm[hidden]{display:none}
+.button-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.neutral-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:8px 14px;border:2px solid var(--neutral);border-radius:16px;background:#fff;color:var(--neutral);font:inherit;font-weight:700;cursor:pointer}
+.head-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lang-btn{display:inline-flex;align-items:center;gap:8px;min-height:var(--tap);padding:0 14px;border:2px solid #fff;border-radius:999px;background:transparent;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.tb-row .lang-btn{margin-inline-start:auto}
+.voice-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;margin-top:22px;border:2px solid var(--neutral);border-radius:999px;background:#fff;color:var(--neutral);font:inherit;font-weight:800;cursor:pointer}
+.voice-btn.in-card{margin-top:0}
+.voice-box{position:fixed;inset-inline:16px;bottom:16px;max-width:448px;margin:0 auto;background:var(--neutral);color:#fff;border-radius:20px;padding:16px 18px;box-shadow:var(--shadow);font-weight:600;z-index:10}
+.voice-box[hidden],.voice-actions[hidden]{display:none}
+.voice-box p{margin:0}
+.voice-actions{display:flex;gap:12px;margin-top:12px}
+.voice-actions .neutral-btn{flex:1}
+.times-card{background:var(--surface);border-radius:24px;padding:18px 16px;box-shadow:var(--shadow)}
+table.times{border-collapse:collapse;width:100%;font-size:1rem}
+.times caption{text-align:start;font-weight:800;margin-bottom:10px}
+.times th,.times td{border:1px solid #6b7178;padding:8px 4px;text-align:center}
+.times thead th{background:var(--dir);color:#fff}
+.times th[scope="row"]{text-align:start;background:#F2F5F8}
+.times-note{margin:12px 0 0;color:var(--text-2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.e1-msg{margin:12px 0 0;font-size:1.125rem}
+.e1-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.e1-actions .neutral-btn{background:#fff}
+.try-msg{margin:12px 0 0;font-weight:700}
+.direction-btn{position:relative}
+.tag{position:absolute;top:-12px;inset-inline-end:16px;background:#fff;color:#1A1A1A;font-weight:800;font-size:1rem;padding:3px 12px;border-radius:999px;border:2px solid #1A1A1A}
+.tag[hidden]{display:none}
+.direction-btn.suggested{box-shadow:0 0 0 4px #fff,0 0 0 7px #1A1A1A}
+.switch-label{flex:1}
+.alert-state{font-weight:800;min-width:56px;text-align:end;color:var(--neutral)}
+.times th[scope="row"]{width:28%}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:4px 12px;border-radius:999px;background:var(--dir);color:#fff;font-weight:700;white-space:nowrap}
+</style>
+</head>
+<body>
+  <div style="max-width:480px;margin:0 auto;padding:8px 16px;background:var(--canvas)">
+    <button type="button" id="shuttle-read-aloud" class="neutral-btn">
+      <span aria-hidden="true">🔊</span><span aria-live="polite">Read this screen aloud</span>
+    </button>
+  </div>
+  <!-- ===================== S1: Where are you going? ===================== -->
+  <section id="s1" class="screen" aria-labelledby="s1-title">
+    <header class="s1-head">
+      <div class="head-row">
+      <div class="brand">
+        <img class="logo-img" src="data:image/png;base64,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" alt="" width="48" height="48">
+        <span><span class="brand-name">University Shuttle</span><span class="brand-sub">Campus bus status</span></span>
+      </div>
+      <button type="button" class="lang-btn" data-lang-btn><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="lang-txt" lang="ar">العربية</span></button>
+      </div>
+    </header>
+
+    <section class="hero-card">
+      <div class="hero-route" aria-hidden="true">
+        <span class="node node-g">G</span>
+        <span class="hero-line"><svg class="icon" viewBox="0 0 24 24"><use href="#i-bus"/></svg></span>
+        <span class="node node-b">B</span>
+      </div>
+      <h1 id="s1-title">Where are you going?</h1>
+      <p class="lead">Choose the direction of your trip.</p>
+    </section>
+
+    <main class="content">
+      <div class="direction-list">
+        <button type="button" class="direction-btn dir-g2b" data-direction="g2b">
+          <span class="tag" hidden>Suggested</span>
+          <span class="pair" aria-hidden="true"><i>G</i><svg class="icon" viewBox="0 0 24 24"><use href="#i-down"/></svg><i>B</i></span>
+          <span class="d-txt"><span><small>From</small><strong>Girls' building</strong></span><span><small>to</small><strong>Boys' building</strong></span></span>
+          <svg class="icon chev" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chev"/></svg>
+        </button>
+        <button type="button" class="direction-btn dir-b2g" data-direction="b2g">
+          <span class="tag" hidden>Suggested</span>
+          <span class="pair" aria-hidden="true"><i>B</i><svg class="icon" viewBox="0 0 24 24"><use href="#i-down"/></svg><i>G</i></span>
+          <span class="d-txt"><span><small>From</small><strong>Boys' building</strong></span><span><small>to</small><strong>Girls' building</strong></span></span>
+          <svg class="icon chev" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chev"/></svg>
+        </button>
+      </div>
+      <button type="button" class="voice-btn" data-voice><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-mic"/></svg><span class="voice-txt">Ask about the bus</span></button>
+    </main>
+  </section>
+
+  <!-- ===================== S2: Shuttle status ★ ===================== -->
+  <section id="s2" class="screen has-band" aria-labelledby="s2-title" hidden>
+    <header class="topbar">
+      <div class="tb-row">
+        <button type="button" class="icon-btn back-btn" id="s2-back" aria-label="Back"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-back"/></svg><span class="icon-label">Back</span></button>
+        <button type="button" class="icon-btn home-btn" aria-label="Home"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-home"/></svg><span class="home-label">Home</span></button>
+        <button type="button" class="lang-btn" data-lang-btn><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="lang-txt" lang="ar">العربية</span></button>
+      </div>
+      <h1 id="s2-title">Shuttle status</h1>
+    </header>
+
+    <div id="s2-direction-bar" class="direction-bar">
+      <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bus"/></svg>
+      <span id="s2-direction-text"></span>
+    </div>
+
+    <main class="content">
+      <div id="status-card" class="status-card" role="status" aria-live="polite">
+        <div class="status-head">
+          <svg class="icon status-icon" aria-hidden="true" viewBox="0 0 24 24"><use id="status-icon-use" href="#i-bus"/></svg>
+          <h2 id="status-heading" class="status-heading"></h2>
+        </div>
+        <ul id="status-lines" class="status-lines"></ul>
+        <p id="status-updated" class="status-updated"></p>
+      </div>
+
+      <div class="route-card">
+        <div id="route" class="route" aria-hidden="true">
+          <div class="route-track"></div>
+          <div class="route-stop route-stop-from"><span class="route-dot"></span><span id="route-from-label" class="route-label"></span></div>
+          <div class="route-stop route-stop-to"><span class="route-dot"></span><span id="route-to-label" class="route-label"></span></div>
+          <div id="route-bus" class="route-bus"><svg class="icon" viewBox="0 0 24 24"><use href="#i-bus"/></svg></div>
+        </div>
+      </div>
+
+      <div id="alert-banner" class="alert-banner" role="alert" hidden>
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bell"/></svg>
+        <span id="alert-banner-text"></span>
+      </div>
+
+      <div class="controls">
+        <div class="control-row">
+          <button type="button" id="alert-switch" class="switch" role="switch" aria-checked="false" aria-labelledby="alert-switch-label">
+            <span class="switch-track"><span class="switch-thumb"></span></span>
+          </button>
+          <label id="alert-switch-label" for="alert-switch" class="switch-label">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bell"/></svg>
+            Alert me when the bus status changes
+          </label>
+          <span id="alert-state" class="alert-state" aria-hidden="true">Off</span>
+        </div>
+        <p id="alert-confirm" class="alert-confirm" hidden>Alert is on. We will tell you when the bus status changes.</p>
+        <div class="button-row">
+          <button type="button" id="refresh-btn" class="neutral-btn" aria-label="Refresh status">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-refresh"/></svg><span>Refresh</span>
+          </button>
+          <button type="button" id="usual-times-btn" class="neutral-btn">
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-clock"/></svg><span>Usual times</span>
+          </button>
+        </div>
+        <button type="button" class="voice-btn in-card" data-voice><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-mic"/></svg><span class="voice-txt">Ask about the bus</span></button>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===================== S4: Usual times ===================== -->
+  <section id="s4" class="screen has-band" aria-labelledby="s4-title" hidden>
+    <header class="topbar">
+      <div class="tb-row">
+        <button type="button" class="icon-btn back-btn" id="s4-back" aria-label="Back"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-back"/></svg><span class="icon-label">Back</span></button>
+        <button type="button" class="icon-btn home-btn" aria-label="Home"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-home"/></svg><span class="home-label">Home</span></button>
+        <button type="button" class="lang-btn" data-lang-btn><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="lang-txt" lang="ar">العربية</span></button>
+      </div>
+      <h1 id="s4-title">Usual times</h1>
+    </header>
+    <div class="direction-bar"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bus"/></svg><span id="s4-direction-text"></span></div>
+    <main class="content">
+      <div class="times-card">
+        <table class="times"><caption id="s4-caption"></caption><thead id="s4-head"></thead><tbody id="s4-body"></tbody></table>
+        <p id="s4-note" class="times-note"></p>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===================== E1: Live location unavailable ===================== -->
+  <section id="e1" class="screen has-band" aria-labelledby="e1-title" hidden>
+    <header class="topbar">
+      <div class="tb-row">
+        <button type="button" class="icon-btn back-btn" id="e1-back" aria-label="Back"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-back"/></svg><span class="icon-label">Back</span></button>
+        <button type="button" class="icon-btn home-btn" aria-label="Home"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-home"/></svg><span class="home-label">Home</span></button>
+        <button type="button" class="lang-btn" data-lang-btn><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="lang-txt" lang="ar">العربية</span></button>
+      </div>
+      <h1 id="e1-title">Shuttle status</h1>
+    </header>
+    <div class="direction-bar"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bus"/></svg><span id="e1-direction-text"></span></div>
+    <main class="content">
+      <div class="status-card state-unavailable" role="status" aria-live="polite">
+        <div class="status-head">
+          <svg class="icon status-icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-unavailable"/></svg>
+          <h2 id="e1-heading" class="status-heading">Live location unavailable</h2>
+        </div>
+        <p id="e1-msg" class="e1-msg">We will show the bus again when its location is back.</p>
+        <ul class="status-lines"><li id="e1-stated"></li></ul>
+        <p id="e1-updated" class="status-updated"></p>
+        <p id="e1-try-msg" class="try-msg"></p>
+      </div>
+      <div class="e1-actions">
+        <button type="button" id="e1-retry" class="neutral-btn"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-refresh"/></svg><span>Try again</span></button>
+        <button type="button" id="e1-usual" class="neutral-btn"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-clock"/></svg><span>Usual times</span></button>
+      </div>
+    </main>
+  </section>
+
+  <div id="voice-box" class="voice-box" role="status" aria-live="polite" hidden>
+    <p id="voice-msg"></p>
+    <div id="voice-actions" class="voice-actions" hidden>
+      <button type="button" id="voice-yes" class="neutral-btn"></button>
+      <button type="button" id="voice-no" class="neutral-btn"></button>
+    </div>
+  </div>
+
+  <!-- ===================== Icon set (inline SVG, no external files) ===================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.3 3 14.7 0 18M12 3c-3 3.3-3 14.7 0 18"/></g></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-1 1.7V20a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2.3A2 2 0 0 1 3 16V5a2 2 0 0 1 2-2zm0 2v6h14V5H5zm2 8.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.4-2h-4.8a2.5 2.5 0 0 0 2.4 2zm7-6V11a7 7 0 0 0-5.5-6.8V3.5a1.5 1.5 0 0 0-3 0v.7A7 7 0 0 0 5 11v5l-2 2v1h18v-1l-2-2z"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <!-- Status icons: one per state, so colour is never the only signal. -->
+    <symbol id="i-here" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></g></symbol>
+    <symbol id="i-arriving" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M4 12h13M12 6l6 6-6 6M21 5v14"/></symbol>
+    <symbol id="i-delayed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18v.5"/></g></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M3 5v14M7 12h13M14 6l6 6-6 6"/></symbol>
+    <symbol id="i-unavailable" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><path d="M3 3l18 18"/></g></symbol>
+  </svg>
+
+  <script>
+// Campus Shuttle Status — app logic (plain JavaScript, no framework).
+// Step 1: S1 (Where are you going?) and S2 (Shuttle status).
+
+// ---------------------------------------------------------------
+// 1. Simulated data. The bus status is SIMULATED (SPEC §6).
+//    Times below are placeholders: replace with your real stated times.
+// ---------------------------------------------------------------
+const SIM = {
+  statedTime: "10:30",      // stated time of this bus
+  expectedTime: "10:42",    // expected time, used only when "Delayed"
+  nextStatedTime: "11:30",  // next stated time, used when the bus has "Left" (R8)
+  lastUpdateMinAgo: 1       // "Updated 1 min ago" when the page opens (R5)
+};
+
+// Building names for each direction. "from" is where Noura leaves from.
+const DIRECTIONS = {
+  g2b: { from: "Girls' building", to: "Boys' building",
+         label: "From Girls' building to Boys' building" },
+  b2g: { from: "Boys' building", to: "Girls' building",
+         label: "From Boys' building to Girls' building" }
+};
+
+// The five states (SPEC §3). The order matches hidden keys 1–5.
+const STATES = ["left", "here", "delayed", "arriving", "unavailable"];
+
+// Where the bus icon sits on the route line, as % from the start.
+// The stop she leaves from is at 20%.
+const BUS_POSITION = { arriving: 8, delayed: 0, here: 20, left: 60 };
+
+// ---------------------------------------------------------------
+// 2. App state
+// ---------------------------------------------------------------
+const app = {
+  screen: "s1",
+  direction: null,          // "g2b" or "b2g"
+  status: "arriving",       // one of STATES
+  alertOn: false,           // alert switch: OFF by default (R4)
+  lastUpdate: Date.now() - SIM.lastUpdateMinAgo * 60000
+};
+
+// ---------------------------------------------------------------
+// 3. Status text. The direction rule lives here: every state names
+//    the building she leaves from (dir.from). The stated time line
+//    is in EVERY state.
+// ---------------------------------------------------------------
+function statusContent(status, dir) {
+  const t = tm(SIM.statedTime), x = tm(SIM.expectedTime), nx = tm(SIM.nextStatedTime), A = lang === "ar";
+  const stated = (A ? "الموعد المعلن " : "Stated time ") + t;
+  switch (status) {
+    case "left": return { icon: "i-left", heading: A ? "غادر الباص " + dir.from : "Left " + dir.from,
+        lines: [stated, (A ? "الموعد المعلن التالي " : "Next stated time ") + nx] };
+    case "here": return { icon: "i-here", heading: A ? "الباص في " + dir.from + " الآن" : "At " + dir.from + " now", lines: [stated] };
+    case "delayed": return { icon: "i-delayed", heading: A ? "الباص متأخر" : "Delayed",
+        lines: [(A ? "الوصول المتوقع إلى " : "Expected at ") + dir.from + " " + x, stated] };
+    case "arriving": return { icon: "i-arriving", heading: A ? "الباص يقترب من " + dir.from : "Arriving at " + dir.from, lines: [stated] };
+    case "unavailable": return { icon: "i-unavailable", heading: A ? "الموقع المباشر غير متاح" : "Live location unavailable", lines: [stated] };
+  }
+}
+
+// "Updated 1 min ago" (R5)
+function updatedText() {
+  const min = Math.floor((Date.now() - app.lastUpdate) / 60000);
+  if (lang === "ar") return min < 1 ? "آخر تحديث: الآن" : "آخر تحديث: قبل {{" + n(min) + " د|" + spokenMinutes(min) + "}}";
+  return min < 1 ? "Updated just now" : "Updated " + min + " min ago";
+}
+
+// ---------------------------------------------------------------
+// 4. Drawing the screens
+// ---------------------------------------------------------------
+const $ = (id) => document.getElementById(id);
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach((s) => { s.hidden = s.id !== id; });
+  app.screen = id;
+  if (id === "s1") updateSuggestion();
+  window.scrollTo(0, 0);
+  // Move focus to the screen title, so keyboard and screen-reader users start at the top.
+  const h1 = document.querySelector("#" + id + " h1");
+  h1.setAttribute("tabindex", "-1");
+  h1.focus();
+}
+
+function renderS2() {
+  const dir = DIRECTIONS[app.direction];
+  const c = statusContent(app.status, dir);
+
+  // Direction colour on the whole page (bar, route line, bus)
+  document.body.classList.remove("dir-g2b", "dir-b2g");
+  document.body.classList.add("dir-" + app.direction);
+  $("s2-direction-text").textContent = dir.label;
+
+  // Status card: colour class + icon + words
+  const card = $("status-card");
+  card.className = "status-card state-" + app.status;
+  $("status-icon-use").setAttribute("href", "#" + c.icon);
+  $("status-heading").textContent = c.heading;
+  $("status-lines").innerHTML = "";
+  c.lines.forEach((text) => {
+    const li = document.createElement("li");
+    li.innerHTML = fmt(text);
+    $("status-lines").appendChild(li);
+  });
+  $("status-updated").innerHTML = fmt(updatedText());
+
+  // Route line
+  $("route-from-label").textContent = dir.from;
+  $("route-to-label").textContent = dir.to;
+  const route = $("route");
+  route.classList.toggle("no-location", app.status === "unavailable");
+  if (app.status !== "unavailable") {
+    $("route-bus").style.insetInlineStart = BUS_POSITION[app.status] + "%";
+  }
+
+  // Alert switch
+  $("alert-switch").setAttribute("aria-checked", String(app.alertOn));
+  $("alert-confirm").hidden = !app.alertOn;
+  $("alert-state").textContent = app.alertOn ? T[lang].on : T[lang].off;
+}
+
+// ---------------------------------------------------------------
+// 5. Actions
+// ---------------------------------------------------------------
+function paintDir() {
+  document.body.classList.remove("dir-g2b", "dir-b2g");
+  document.body.classList.add("dir-" + app.direction);
+}
+function chooseDirection(direction) {
+  app.direction = direction;
+  $("alert-banner").hidden = true;
+  if (app.status === "unavailable") { renderE1(); showScreen("e1"); } else { renderS2(); showScreen("s2"); }
+}
+
+// Called by the simulator (hidden keys now, operator panel later).
+function setStatus(newStatus) {
+  if (!STATES.includes(newStatus) || newStatus === app.status) return;
+  app.status = newStatus;
+  app.lastUpdate = Date.now();
+  if (newStatus === "unavailable") app.lastUpdate -= 10 * 60000;   // last known update was 10 min ago
+  if (app.screen === "s2" || app.screen === "e1") {
+    if (newStatus === "unavailable") { renderE1(); showScreen("e1"); }       // E1
+    else { renderS2(); if (app.screen === "e1") showScreen("s2"); }          // location is back: return to S2, direction kept
+    if (app.alertOn && app.direction) {
+      const c = statusContent(app.status, DIRECTIONS[app.direction]);
+      $("alert-banner-text").textContent = T[lang].changed + c.heading;
+      $("alert-banner").hidden = false;
+    }
+  }
+}
+
+function renderE1() {
+  const dir = DIRECTIONS[app.direction], c = statusContent("unavailable", dir), d = T[lang];
+  paintDir();
+  $("e1-direction-text").textContent = dir.label;
+  $("e1-heading").textContent = c.heading; $("e1-msg").textContent = d.e1msg;
+  $("e1-stated").innerHTML = fmt(c.lines[0]); $("e1-updated").innerHTML = fmt(updatedText()); $("e1-try-msg").textContent = "";
+  document.querySelector("#e1-retry span").textContent = d.tryAgain; document.querySelector("#e1-usual span").textContent = d.usual;
+}
+
+// Fall 2026 transportation schedule (from the university timetable), 24-hour times, Sunday to Thursday.
+// NOTE: Boys -> Girls, Wednesday: the source has a red asterisk at 12:40 that is NOT included (meaning to be confirmed).
+const TIMES = {
+  g2b: [   // Girls' building -> Boys' building
+    ["07:40","10:30","13:40","14:40","15:40"],
+    ["10:30"],
+    ["07:40","08:40","09:30","10:30","12:45","13:40","15:40"],
+    ["07:40","10:30","13:40"],
+    ["07:40","12:45","15:40"]],
+  b2g: [   // Boys' building -> Girls' building
+    ["12:30","15:00","16:00","17:30"],
+    ["12:30","17:30"],
+    ["10:30","11:50","12:30","14:40","17:30"],
+    ["12:30","15:00","16:45","17:30"],
+    ["10:30","11:50","14:40","17:30"]]
+};
+function chip(t) {
+  const h = Number(t.split(":")[0]), shown = (h % 12 || 12) + ":" + t.split(":")[1];
+  if (lang === "ar") return '<li class="chip"><span aria-hidden="true">' + n(shown) + '<span class="ap"> ' + (h < 12 ? "ص" : "م") + '</span></span><span class="sr">' + spokenTime(t) + "</span></li>";
+  return '<li class="chip">' + shown + '<span class="ap"> ' + (h < 12 ? "AM" : "PM") + "</span></li>";
+}
+function renderS4() {
+  const d = T[lang], dir = DIRECTIONS[app.direction];
+  paintDir();
+  $("s4-direction-text").textContent = dir.label;
+  $("s4-caption").textContent = d.caption + " " + dir.label; $("s4-note").textContent = d.note;
+  $("s4-head").innerHTML = '<tr><th scope="col">' + d.day + '</th><th scope="col">' + d.timesCol + "</th></tr>";
+  $("s4-body").innerHTML = TIMES[app.direction].map((row, k) =>
+    '<tr><th scope="row">' + d.days[k] + '</th><td><ul class="chips" role="list">' + row.map(chip).join("") + "</ul></td></tr>").join("");
+}
+function openS4() { app.from = app.screen; renderS4(); showScreen("s4"); }
+function rerender() {
+  if (!app.direction) return;
+  if (app.screen === "s4") renderS4(); else if (app.screen === "e1") renderE1(); else renderS2();
+}
+
+function toggleAlert() {
+  app.alertOn = !app.alertOn;
+  if (!app.alertOn) $("alert-banner").hidden = true;
+  renderS2();
+}
+
+function refreshStatus() {
+  // Prototype: the "latest status" is whatever the simulator set. Reload it and reset the time.
+  app.lastUpdate = Date.now();
+  renderS2();
+}
+
+// ---------------------------------------------------------------
+// 6. Wiring buttons
+// ---------------------------------------------------------------
+document.querySelectorAll(".direction-btn").forEach((btn) => {
+  btn.addEventListener("click", () => chooseDirection(btn.dataset.direction));
+});
+$("s2-back").addEventListener("click", () => showScreen("s1"));   // S2 → S1
+$("alert-switch").addEventListener("click", toggleAlert);
+$("refresh-btn").addEventListener("click", refreshStatus);
+$("usual-times-btn").addEventListener("click", openS4);
+$("e1-usual").addEventListener("click", openS4);
+$("e1-retry").addEventListener("click", () => { $("e1-try-msg").textContent = T[lang].still; });
+$("e1-back").addEventListener("click", () => showScreen("s1"));
+$("s4-back").addEventListener("click", () => showScreen(app.from === "e1" ? "e1" : "s2"));
+document.querySelectorAll(".home-btn").forEach((b) => b.addEventListener("click", () => showScreen("s1")));
+
+// Keep "Updated N min ago" current while S2 is open.
+setInterval(() => {
+  if (app.screen === "s2") $("status-updated").innerHTML = fmt(updatedText());
+  if (app.screen === "e1") $("e1-updated").innerHTML = fmt(updatedText());
+}, 30000);
+
+
+// ---------------------------------------------------------------
+// Language (English / Arabic) and voice (Layer B)
+// ---------------------------------------------------------------
+const T = {
+  en: { brand:"University Shuttle", sub:"Campus bus status", s1:"Where are you going?", lead:"Choose the direction of your trip.",
+        from:"From", to:"to", girls:"Girls' building", boys:"Boys' building", voice:"Ask about the bus", lang:"العربية", langLang:"ar",
+        back:"Back", backAria:"Back", s2:"Shuttle status", alertLbl:"Alert me when the bus status changes",
+        alertOn:"Alert is on. We will tell you when the bus status changes.", refresh:"Refresh", refreshAria:"Refresh status", usual:"Usual times",
+        changed:"Bus status changed: ", sug:"Suggested", on:"On", off:"Off", home:"Home", s4:"Usual times", e1msg:"We will show the bus again when its location is back.", tryAgain:"Try again", still:"Still no live location. We keep trying.", caption:"Stated bus times,", note:"These are the stated times. The bus may come early or late.", timesCol:"Times", day:"Day", days:["Sunday","Monday","Tuesday","Wednesday","Thursday"], hours:[["8:00","AM"],["10:00","AM"],["12:00","PM"],["2:00","PM"]], hasBus:"Bus", noBus:"No bus", listening:"Listening…", nosup:"Voice is not supported in this browser. Please use Chrome.",
+        dym:"Did you mean: where is the bus?", yes:"Yes", no:"No", err:"I could not hear you. Please try again.", which:"Which direction? Tap one of the two buttons." },
+  ar: { brand:"باص الجامعة", sub:"حالة باص الحرم الجامعي", s1:"إلى أين تتجهين؟", lead:"اختاري اتجاه رحلتك.",
+        from:"من", to:"إلى", girls:"مبنى الطالبات", boys:"مبنى الطلاب", voice:"اسأل عن الباص", lang:"English", langLang:"en",
+        back:"الرجوع", backAria:"الرجوع", s2:"حالة الباص", alertLbl:"نبّهني عند تغيّر حالة الباص",
+        alertOn:"تم تشغيل التنبيه. سنخبرك عند تغيّر حالة الباص.", refresh:"تحديث", refreshAria:"تحديث الحالة", usual:"المواعيد المعتادة",
+        changed:"تغيّرت حالة الباص: ", sug:"مقترح", on:"تشغيل", off:"إيقاف", home:"الرئيسية", s4:"المواعيد المعتادة", e1msg:"سنعرض الباص مرة أخرى عند عودة الموقع.", tryAgain:"حاولي مرة ثانية", still:"ما زال الموقع غير متاح. نواصل المحاولة.", caption:"مواعيد الباص المعلنة،", note:"هذه هي المواعيد المعلنة، وقد يصل الباص مبكرًا أو متأخرًا.", timesCol:"الأوقات", day:"اليوم", days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"], hours:[["٨:٠٠","ص","الثامنة صباحًا"],["١٠:٠٠","ص","العاشرة صباحًا"],["١٢:٠٠","م","الثانية عشرة ظهرًا"],["٢:٠٠","م","الثانية ظهرًا"]], hasBus:"يوجد باص", noBus:"لا يوجد باص", listening:"أستمع…", nosup:"الصوت غير مدعوم في هذا المتصفح. استخدمي Chrome.",
+        dym:"هل تقصدين: وين الباص؟", yes:"نعم", no:"لا", err:"ما سمعتك. حاولي مرة ثانية.", which:"أي اتجاه؟ اضغطي على أحد الزرين." }
+};
+let lang = "en";
+
+// ---------------------------------------------------------------
+// Spoken forms (accessibility, check 6): Arabic-Indic digits are shown, words are spoken.
+// {{shown|spoken}} markers become <span aria-hidden>shown</span><span class="sr">spoken</span>.
+// ---------------------------------------------------------------
+function fmt(t) { return t.replace(/\{\{(.+?)\|(.+?)\}\}/g, '<span aria-hidden="true">$1</span><span class="sr">$2</span>'); }
+const AR_HOURS = ["", "الأولى","الثانية","الثالثة","الرابعة","الخامسة","السادسة","السابعة","الثامنة","التاسعة","العاشرة","الحادية عشرة","الثانية عشرة"];
+const AR_UNITS = ["", "واحدة","اثنتان","ثلاث","أربع","خمس","ست","سبع","ثماني","تسع"];
+const AR_TEENS = ["عشر","إحدى عشرة","اثنتا عشرة","ثلاث عشرة","أربع عشرة","خمس عشرة","ست عشرة","سبع عشرة","ثماني عشرة","تسع عشرة"];
+const AR_TENS = ["", "", "عشرون","ثلاثون","أربعون","خمسون"];
+function arNum(m) {   // 1..59, feminine (for "minute")
+  if (m < 10) return AR_UNITS[m];
+  if (m < 20) return AR_TEENS[m - 10];
+  const u = m % 10, t = Math.floor(m / 10);
+  return (u ? AR_UNITS[u] + " و" : "") + AR_TENS[t];
+}
+function arPeriod(h) { return h < 12 ? "صباحًا" : h < 15 ? "ظهرًا" : h < 18 ? "عصرًا" : "مساءً"; }
+function spokenTime(str) {   // "10:30" -> "العاشرة والنصف صباحًا"
+  const [h, m] = str.split(":").map(Number), hw = AR_HOURS[h % 12 || 12], p = " " + arPeriod(h);
+  if (m === 0) return hw + p;
+  if (m === 15) return hw + " والربع" + p;
+  if (m === 30) return hw + " والنصف" + p;
+  const mp = m === 1 ? "دقيقة" : m === 2 ? "دقيقتان" : m <= 10 ? arNum(m) + " دقائق" : arNum(m) + " دقيقة";
+  return hw + " و" + mp + p;
+}
+// 24-hour "14:05" -> "2:05 PM"  /  Arabic: shown "٢:٠٥ م", spoken in words
+function tm(str) {
+  const [h, m] = str.split(":").map(Number), t = (h % 12 || 12) + ":" + String(m).padStart(2, "0");
+  if (lang === "ar") return "{{" + n(t) + " " + (h < 12 ? "ص" : "م") + "|" + spokenTime(str) + "}}";
+  return t + " " + (h < 12 ? "AM" : "PM");
+}
+function spokenMinutes(m) {
+  if (m === 1) return "دقيقة"; if (m === 2) return "دقيقتين"; if (m <= 10) return arNum(m) + " دقائق";
+  return arNum(m).replace("اثنتا", "اثنتي") + " دقيقة";
+}
+function n(v) { return lang === "ar" ? String(v).replace(/\d/g, (d) => "٠١٢٣٤٥٦٧٨٩"[d]) : String(v); }
+
+function setLang(l) {
+  lang = l; const d = T[l];
+  document.documentElement.lang = l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+  const set = (sel, v) => document.querySelectorAll(sel).forEach((e) => { e.textContent = v; });
+  set(".brand-name", d.brand); set(".brand-sub", d.sub); set("#s1-title", d.s1); set(".lead", d.lead);
+  set(".dir-g2b .d-txt small:first-of-type", d.from); set(".dir-b2g .d-txt small:first-of-type", d.from);
+  document.querySelectorAll(".d-txt > span").forEach((sp) => { sp.querySelector("small").textContent = sp === sp.parentNode.firstElementChild ? d.from : d.to; });
+  const g = document.querySelectorAll(".dir-g2b .d-txt strong"), b = document.querySelectorAll(".dir-b2g .d-txt strong");
+  g[0].textContent = d.girls; g[1].textContent = d.boys; b[0].textContent = d.boys; b[1].textContent = d.girls;
+  set(".voice-txt", d.voice); set(".tag", d.sug); set("#s2-title", d.s2); set("#e1-title", d.s2); set("#s4-title", d.s4); set(".icon-label", d.back); set(".home-label", d.home);
+  document.querySelectorAll(".back-btn").forEach((e) => e.setAttribute("aria-label", d.backAria));
+  document.querySelectorAll(".home-btn").forEach((e) => e.setAttribute("aria-label", d.home));
+  $("alert-switch-label").lastChild.textContent = " " + d.alertLbl; $("alert-confirm").textContent = d.alertOn;
+  set("#refresh-btn span", d.refresh); $("refresh-btn").setAttribute("aria-label", d.refreshAria); set("#usual-times-btn span", d.usual);
+  document.querySelectorAll(".lang-txt").forEach((e) => { e.textContent = d.lang; e.lang = d.langLang; });
+  DIRECTIONS.g2b = { from: d.girls, to: d.boys, label: d.from + " " + d.girls + " " + d.to + " " + d.boys };
+  DIRECTIONS.b2g = { from: d.boys, to: d.girls, label: d.from + " " + d.boys + " " + d.to + " " + d.girls };
+  applyVoiceButtons();
+  document.title = d.brand + " – " + d.sub;
+  $("alert-state").textContent = app.alertOn ? d.on : d.off;
+  rerender();
+}
+
+// ----- Voice: browser speech recognition + simple intent matching (no API key) -----
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let boxTimer = null, pendingDir = null;
+function showBox(msg, withButtons) {
+  clearTimeout(boxTimer);
+  $("voice-msg").textContent = msg; $("voice-actions").hidden = !withButtons; $("voice-box").hidden = false;
+  if (withButtons) $("voice-yes").focus();   // keyboard and screen-reader users land on the question
+  if (!withButtons) boxTimer = setTimeout(() => { $("voice-box").hidden = true; }, 6000);
+}
+function openByVoice(dir) {
+  dir = dir || app.direction;
+  if (!dir) { showBox(T[lang].which); return; }
+  $("voice-box").hidden = true; chooseDirection(dir);
+}
+function detectDirection(t) {
+  if (/من\s*(مبنى\s*)?(ال)?(طالبات|بنات)|from\s+(the\s+)?girls/.test(t)) return "g2b";
+  if (/من\s*(مبنى\s*)?(ال)?(طلاب|بنين|شباب)|from\s+(the\s+)?boys/.test(t)) return "b2g";
+  return null;
+}
+function handleSpeech(text) {
+  const t = text.toLowerCase(); pendingDir = detectDirection(t);
+  if (/bus|باص|الباص|وين|where|متى|when/.test(t)) openByVoice(pendingDir);
+  else showBox(T[lang].dym, true);   // unsure: ask, with Yes and No
+}
+function startVoice() {
+  if (!SR) { showBox(T[lang].nosup); return; }
+  const r = new SR(); r.lang = lang === "ar" ? "ar-SA" : "en-US"; r.interimResults = false;
+  showBox(T[lang].listening);
+  r.onresult = (e) => handleSpeech(e.results[0][0].transcript);
+  r.onerror = () => showBox(T[lang].err);
+  r.start();
+}
+let lastMic = null;
+document.querySelectorAll("[data-voice]").forEach((b) => b.addEventListener("click", () => { lastMic = b; startVoice(); }));
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("voice-box").hidden) { $("voice-box").hidden = true; if (lastMic) lastMic.focus(); } });
+document.querySelectorAll("[data-lang-btn]").forEach((b) => b.addEventListener("click", () => setLang(lang === "en" ? "ar" : "en")));
+$("voice-yes").addEventListener("click", () => openByVoice(pendingDir));
+$("voice-no").addEventListener("click", () => { $("voice-box").hidden = true; if (lastMic) lastMic.focus(); });
+function applyVoiceButtons() { $("voice-yes").textContent = T[lang].yes; $("voice-no").textContent = T[lang].no; }
+
+
+// ---------------------------------------------------------------
+// Layer A (adaptive): suggest the trip direction from the student's location.
+// Real location first; the simulator can override it (keys g / b / n, or ?loc=girls|boys|none).
+// The two points are single spots on each campus, about 7.4 km apart.
+// ---------------------------------------------------------------
+const BUILDINGS = {
+  g: { lat: 24.433237228986638, lon: 39.65857254031578 },   // Girls' building
+  b: { lat: 24.48029416543253,  lon: 39.71006560536535 }    // Boys' building
+};
+const NEAR_RADIUS_M = 1000;   // "at the building" = within 1 km (the buildings are far apart, so 1 km cannot confuse them)
+let realPos = null;
+let simLoc = new URLSearchParams(location.search).get("loc");   // "girls" | "boys" | "none" | null
+
+function distM(a, b) {
+  const R = 6371000, rad = (x) => x * Math.PI / 180;
+  const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+// Returns "g2b", "b2g" or null (no location, denied, or far from both buildings: no suggestion).
+function suggestedDirection() {
+  if (simLoc === "girls") return "g2b";
+  if (simLoc === "boys") return "b2g";
+  if (simLoc === "none" || !realPos) return null;
+  const dg = distM(realPos, BUILDINGS.g), db = distM(realPos, BUILDINGS.b);
+  if (dg <= NEAR_RADIUS_M && dg < db) return "g2b";
+  if (db <= NEAR_RADIUS_M && db < dg) return "b2g";
+  return null;
+}
+function updateSuggestion() {
+  const sug = suggestedDirection(), list = document.querySelector(".direction-list");
+  document.querySelectorAll(".direction-btn").forEach((b) => {
+    const on = b.dataset.direction === sug;
+    b.classList.toggle("suggested", on); b.querySelector(".tag").hidden = !on;
+  });
+  list.prepend(list.querySelector('[data-direction="' + (sug || "g2b") + '"]'));   // suggested one first
+}
+function locate() {
+  if (simLoc || !navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(
+    (pos) => { realPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }; updateSuggestion(); },
+    () => {},   // denied or unavailable: no suggestion, S1 works as normal
+    { timeout: 8000, maximumAge: 60000 });
+}
+document.addEventListener("keydown", (e) => {
+  const m = { g: "girls", b: "boys", n: "none" }[e.key.toLowerCase()];
+  if (m && !e.ctrlKey && !e.metaKey && !e.altKey) { simLoc = m; updateSuggestion(); }
+});
+
+// ---------------------------------------------------------------
+// 7. TEMPORARY simulator: hidden keys (SPEC §6b allows hidden keys).
+//    1 = left, 2 = here, 3 = delayed, 4 = arriving, 5 = unavailable.
+//    Replaced by the separate operator page in a later step.
+// ---------------------------------------------------------------
+document.addEventListener("keydown", (e) => {
+  const n = parseInt(e.key, 10);
+  if (n >= 1 && n <= 5) setStatus(STATES[n - 1]);
+});
+
+setLang("en");
+locate();
+updateSuggestion();
+</script>
+<script>
+(() => {
+  const reader = document.getElementById("shuttle-read-aloud");
+  const synthesis = window.speechSynthesis;
+  const language = () => document.documentElement.lang === "ar" ? "ar" : "en";
+  const labels = {
+    en: { start: "Read this screen aloud", stop: "Stop reading", error: "Audio reading unavailable" },
+    ar: { start: "اقرأ الشاشة بصوت عالٍ", stop: "إيقاف القراءة", error: "القراءة الصوتية غير متاحة" },
+  };
+  let current = null;
+
+  function setLabel(state) {
+    reader.lastElementChild.textContent = labels[language()][state];
+  }
+
+  function stopReading() {
+    if (current) {
+      current = null;
+      synthesis.cancel();
+    }
+    setLabel("start");
+  }
+
+  function speechText(node) {
+    if (node.nodeType === Node.TEXT_NODE) return node.textContent;
+    if (!(node instanceof HTMLElement) || node.hidden ||
+        node.getAttribute("aria-hidden") === "true" ||
+        getComputedStyle(node).display === "none" ||
+        getComputedStyle(node).visibility === "hidden") return "";
+
+    const labelId = node.getAttribute("aria-labelledby");
+    let spoken = node.matches("button, a")
+      ? (document.getElementById(labelId)?.textContent || node.getAttribute("aria-label"))
+      : "";
+    if (!spoken) {
+      spoken = Array.from(node.childNodes, speechText).join(" ").replace(/\s+/g, " ").trim();
+    }
+    if (!spoken) return "";
+    return node.matches("h1,h2,h3,p,li,button,a,tr") && !/[.!?؟]$/.test(spoken)
+      ? spoken + "."
+      : spoken;
+  }
+
+  reader.addEventListener("click", () => {
+    if (current) {
+      stopReading();
+      return;
+    }
+    if (!synthesis || !window.SpeechSynthesisUtterance) {
+      setLabel("error");
+      return;
+    }
+    const screen = document.querySelector(".screen:not([hidden])");
+    if (!screen) return;
+    const message = speechText(screen) + " " + speechText(document.getElementById("voice-box"));
+    const utterance = new SpeechSynthesisUtterance(message.trim());
+    utterance.lang = language() === "ar" ? "ar-SA" : "en-US";
+    utterance.rate = 0.95;
+    utterance.onend = () => {
+      if (current === utterance) stopReading();
+    };
+    utterance.onerror = () => {
+      if (current !== utterance) return;
+      current = null;
+      setLabel("error");
+    };
+    current = utterance;
+    setLabel("stop");
+    synthesis.speak(utterance);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (current && !reader.contains(event.target)) stopReading();
+  }, true);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && current) stopReading();
+  });
+  const observer = new MutationObserver(stopReading);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+  document.querySelectorAll(".screen").forEach((screen) => {
+    observer.observe(screen, { attributes: true, attributeFilter: ["hidden"] });
+  });
+})();
+</script>
+</body>
+</html>
