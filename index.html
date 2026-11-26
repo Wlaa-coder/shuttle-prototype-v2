@@ -8,7 +8,7 @@
   <!-- Fonts (SPEC §3b): Inter for English, Noto Sans Arabic for Arabic. Stylesheet only, no key, no script. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;600;700;800&display=swap">
   <style>
 :root{
   --text:#1A1A1A; --text-2:#4A4F55; --canvas:#F2F5F8; --surface:#FFFFFF;
@@ -80,6 +80,7 @@ h1[tabindex="-1"]:focus{outline:none}
 .state-delayed{color:var(--late-text);background:var(--late-bg)}
 .state-left{color:var(--left-text);background:var(--left-bg)}
 .state-unavailable{color:var(--err-text);background:var(--err-bg)}
+[dir="rtl"] .state-arriving .status-icon,[dir="rtl"] .state-left .status-icon{transform:scaleX(-1)} /* arrows point the way the route runs in RTL */
 
 .route-card{margin-top:16px;background:var(--surface);border-radius:24px;padding:8px 20px 12px;box-shadow:var(--shadow)}
 .route{position:relative;height:112px;margin:8px 12px 0}
@@ -142,6 +143,8 @@ table.times{border-collapse:collapse;width:100%;font-size:1rem}
 .alert-state{font-weight:800;min-width:56px;text-align:end;color:var(--neutral)}
 .times th[scope="row"]{width:28%}
 .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.sug-note{margin:14px 4px 0;color:var(--text-2)}
+.sug-note[hidden]{display:none}
 .chip{padding:4px 12px;border-radius:999px;background:var(--dir);color:#fff;font-weight:700;white-space:nowrap}
 </style>
 </head>
@@ -156,7 +159,7 @@ table.times{border-collapse:collapse;width:100%;font-size:1rem}
     <header class="s1-head">
       <div class="head-row">
       <div class="brand">
-        <img class="logo-img" src="data:image/png;base64,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" alt="" width="48" height="48">
+        <img class="logo-img" src="data:image/png;base64,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" alt="University logo" width="48" height="48">
         <span><span class="brand-name">University Shuttle</span><span class="brand-sub">Campus bus status</span></span>
       </div>
       <button type="button" class="lang-btn" data-lang-btn><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-globe"/></svg><span class="lang-txt" lang="ar">العربية</span></button>
@@ -188,6 +191,7 @@ table.times{border-collapse:collapse;width:100%;font-size:1rem}
           <svg class="icon chev" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-chev"/></svg>
         </button>
       </div>
+      <p id="sug-note" class="sug-note" hidden></p>
       <button type="button" class="voice-btn" data-voice><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-mic"/></svg><span class="voice-txt">Ask about the bus</span></button>
     </main>
   </section>
@@ -342,11 +346,20 @@ table.times{border-collapse:collapse;width:100%;font-size:1rem}
 //    Times below are placeholders: replace with your real stated times.
 // ---------------------------------------------------------------
 const SIM = {
-  statedTime: "10:30",      // stated time of this bus
-  expectedTime: "10:42",    // expected time, used only when "Delayed"
-  nextStatedTime: "11:30",  // next stated time, used when the bus has "Left" (R8)
+  day: 2,                   // simulated day: 0 = Sunday ... 4 = Thursday (2 = Tuesday)
+  statedTime: "10:30",      // stated time of this bus (it is in the Tuesday timetable for both directions)
+  delayMin: 12,             // expected = stated + 12 min, used only when "Delayed"
   lastUpdateMinAgo: 1       // "Updated 1 min ago" when the page opens (R5)
 };
+// The next stated time always comes from the same timetable that S4 shows (R8), so the two screens never disagree.
+function nextStated(dirKey) {
+  const row = TIMES[dirKey][SIM.day];
+  return row.find((t) => t > SIM.statedTime) || null;
+}
+function addMin(t, m) {
+  const [h, mm] = t.split(":").map(Number), v = h * 60 + mm + m;
+  return String(Math.floor(v / 60)).padStart(2, "0") + ":" + String(v % 60).padStart(2, "0");
+}
 
 // Building names for each direction. "from" is where Noura leaves from.
 const DIRECTIONS = {
@@ -371,6 +384,7 @@ const app = {
   direction: null,          // "g2b" or "b2g"
   status: "arriving",       // one of STATES
   alertOn: false,           // alert switch: OFF by default (R4)
+  bannerStatus: null,       // status named in the "Bus status changed" banner (null = no banner)
   lastUpdate: Date.now() - SIM.lastUpdateMinAgo * 60000
 };
 
@@ -379,8 +393,10 @@ const app = {
 //    the building she leaves from (dir.from). The stated time line
 //    is in EVERY state.
 // ---------------------------------------------------------------
-function statusContent(status, dir) {
-  const t = tm(SIM.statedTime), x = tm(SIM.expectedTime), nx = tm(SIM.nextStatedTime), A = lang === "ar";
+function statusContent(status, dir, dirKey) {
+  const nxt = nextStated(dirKey || app.direction);
+  const t = tm(SIM.statedTime), x = tm(addMin(SIM.statedTime, SIM.delayMin)), A = lang === "ar";
+  const nx = nxt ? tm(nxt) : (A ? "لا يوجد باص آخر اليوم" : "no more buses today");
   const stated = (A ? "الموعد المعلن " : "Stated time ") + t;
   switch (status) {
     case "left": return { icon: "i-left", heading: A ? "غادر الباص " + dir.from : "Left " + dir.from,
@@ -447,10 +463,16 @@ function renderS2() {
     $("route-bus").style.insetInlineStart = BUS_POSITION[app.status] + "%";
   }
 
-  // Alert switch
+  renderAlert();
+}
+
+function renderAlert() {
   $("alert-switch").setAttribute("aria-checked", String(app.alertOn));
   $("alert-confirm").hidden = !app.alertOn;
   $("alert-state").textContent = app.alertOn ? T[lang].on : T[lang].off;
+  const show = app.alertOn && app.bannerStatus && app.bannerStatus !== "unavailable";
+  $("alert-banner").hidden = !show;
+  if (show) $("alert-banner-text").textContent = T[lang].changed + statusContent(app.bannerStatus, DIRECTIONS[app.direction]).heading;
 }
 
 // ---------------------------------------------------------------
@@ -462,7 +484,7 @@ function paintDir() {
 }
 function chooseDirection(direction) {
   app.direction = direction;
-  $("alert-banner").hidden = true;
+  app.bannerStatus = null;
   if (app.status === "unavailable") { renderE1(); showScreen("e1"); } else { renderS2(); showScreen("s2"); }
 }
 
@@ -475,11 +497,7 @@ function setStatus(newStatus) {
   if (app.screen === "s2" || app.screen === "e1") {
     if (newStatus === "unavailable") { renderE1(); showScreen("e1"); }       // E1
     else { renderS2(); if (app.screen === "e1") showScreen("s2"); }          // location is back: return to S2, direction kept
-    if (app.alertOn && app.direction) {
-      const c = statusContent(app.status, DIRECTIONS[app.direction]);
-      $("alert-banner-text").textContent = T[lang].changed + c.heading;
-      $("alert-banner").hidden = false;
-    }
+    if (app.alertOn && app.direction) { app.bannerStatus = newStatus; renderAlert(); }
   }
 }
 
@@ -522,16 +540,17 @@ function renderS4() {
   $("s4-body").innerHTML = TIMES[app.direction].map((row, k) =>
     '<tr><th scope="row">' + d.days[k] + '</th><td><ul class="chips" role="list">' + row.map(chip).join("") + "</ul></td></tr>").join("");
 }
-function openS4() { app.from = app.screen; renderS4(); showScreen("s4"); }
+function openS4() { renderS4(); showScreen("s4"); }
 function rerender() {
+  updateSuggestion();
   if (!app.direction) return;
   if (app.screen === "s4") renderS4(); else if (app.screen === "e1") renderE1(); else renderS2();
 }
 
 function toggleAlert() {
   app.alertOn = !app.alertOn;
-  if (!app.alertOn) $("alert-banner").hidden = true;
-  renderS2();
+  if (!app.alertOn) app.bannerStatus = null;
+  renderAlert();   // only the switch changes, so the status card is not announced again
 }
 
 function refreshStatus() {
@@ -551,9 +570,15 @@ $("alert-switch").addEventListener("click", toggleAlert);
 $("refresh-btn").addEventListener("click", refreshStatus);
 $("usual-times-btn").addEventListener("click", openS4);
 $("e1-usual").addEventListener("click", openS4);
-$("e1-retry").addEventListener("click", () => { $("e1-try-msg").textContent = T[lang].still; });
+$("e1-retry").addEventListener("click", () => {
+  $("e1-try-msg").textContent = "";   // clear first, so a second press is announced again
+  setTimeout(() => { $("e1-try-msg").textContent = T[lang].still; $("e1-updated").innerHTML = fmt(updatedText()); }, 150);
+});
 $("e1-back").addEventListener("click", () => showScreen("s1"));
-$("s4-back").addEventListener("click", () => showScreen(app.from === "e1" ? "e1" : "s2"));
+function backToStatus() {   // S4 -> the status screen that matches the bus NOW (it may have changed while S4 was open)
+  if (app.status === "unavailable") { renderE1(); showScreen("e1"); } else { renderS2(); showScreen("s2"); }
+}
+$("s4-back").addEventListener("click", backToStatus);
 document.querySelectorAll(".home-btn").forEach((b) => b.addEventListener("click", () => showScreen("s1")));
 
 // Keep "Updated N min ago" current while S2 is open.
@@ -571,14 +596,14 @@ const T = {
         from:"From", to:"to", girls:"Girls' building", boys:"Boys' building", voice:"Ask about the bus", lang:"العربية", langLang:"ar",
         back:"Back", backAria:"Back", s2:"Shuttle status", alertLbl:"Alert me when the bus status changes",
         alertOn:"Alert is on. We will tell you when the bus status changes.", refresh:"Refresh", refreshAria:"Refresh status", usual:"Usual times",
-        changed:"Bus status changed: ", sug:"Suggested", on:"On", off:"Off", home:"Home", s4:"Usual times", e1msg:"We will show the bus again when its location is back.", tryAgain:"Try again", still:"Still no live location. We keep trying.", caption:"Stated bus times,", note:"These are the stated times. The bus may come early or late.", timesCol:"Times", day:"Day", days:["Sunday","Monday","Tuesday","Wednesday","Thursday"], hours:[["8:00","AM"],["10:00","AM"],["12:00","PM"],["2:00","PM"]], hasBus:"Bus", noBus:"No bus", listening:"Listening…", nosup:"Voice is not supported in this browser. Please use Chrome.",
-        dym:"Did you mean: where is the bus?", yes:"Yes", no:"No", err:"I could not hear you. Please try again.", which:"Which direction? Tap one of the two buttons." },
+        changed:"Bus status changed: ", sug:"Suggested", on:"On", off:"Off", home:"Home", s4:"Usual times", e1msg:"We will show the bus again when its location is back.", tryAgain:"Try again", still:"Still no live location. We keep trying.", caption:"Stated bus times,", note:"These are the stated times. The bus may come early or late.", timesCol:"Times", day:"Day", days:["Sunday","Monday","Tuesday","Wednesday","Thursday"], listening:"Listening…", nosup:"Voice is not supported in this browser. Please use Chrome.",
+        dym:"Did you mean: where is the bus?", yes:"Yes", no:"No", err:"I could not hear you. Please try again.", which:"Which direction? Tap one of the two buttons.", mic:"The microphone is blocked. Allow it in the browser, or tap a button instead.", nospeech:"I did not hear anything. Tap the microphone and speak again.", sugG:"Suggested because you seem to be near the Girls' building. Not right? Choose the other direction.", sugB:"Suggested because you seem to be near the Boys' building. Not right? Choose the other direction." },
   ar: { brand:"باص الجامعة", sub:"حالة باص الحرم الجامعي", s1:"إلى أين تتجهين؟", lead:"اختاري اتجاه رحلتك.",
-        from:"من", to:"إلى", girls:"مبنى الطالبات", boys:"مبنى الطلاب", voice:"اسأل عن الباص", lang:"English", langLang:"en",
+        from:"من", to:"إلى", girls:"مبنى الطالبات", boys:"مبنى الطلاب", voice:"اسألي عن الباص", lang:"English", langLang:"en",
         back:"الرجوع", backAria:"الرجوع", s2:"حالة الباص", alertLbl:"نبّهني عند تغيّر حالة الباص",
         alertOn:"تم تشغيل التنبيه. سنخبرك عند تغيّر حالة الباص.", refresh:"تحديث", refreshAria:"تحديث الحالة", usual:"المواعيد المعتادة",
-        changed:"تغيّرت حالة الباص: ", sug:"مقترح", on:"تشغيل", off:"إيقاف", home:"الرئيسية", s4:"المواعيد المعتادة", e1msg:"سنعرض الباص مرة أخرى عند عودة الموقع.", tryAgain:"حاولي مرة ثانية", still:"ما زال الموقع غير متاح. نواصل المحاولة.", caption:"مواعيد الباص المعلنة،", note:"هذه هي المواعيد المعلنة، وقد يصل الباص مبكرًا أو متأخرًا.", timesCol:"الأوقات", day:"اليوم", days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"], hours:[["٨:٠٠","ص","الثامنة صباحًا"],["١٠:٠٠","ص","العاشرة صباحًا"],["١٢:٠٠","م","الثانية عشرة ظهرًا"],["٢:٠٠","م","الثانية ظهرًا"]], hasBus:"يوجد باص", noBus:"لا يوجد باص", listening:"أستمع…", nosup:"الصوت غير مدعوم في هذا المتصفح. استخدمي Chrome.",
-        dym:"هل تقصدين: وين الباص؟", yes:"نعم", no:"لا", err:"ما سمعتك. حاولي مرة ثانية.", which:"أي اتجاه؟ اضغطي على أحد الزرين." }
+        changed:"تغيّرت حالة الباص: ", sug:"مقترح", on:"تشغيل", off:"إيقاف", home:"الرئيسية", s4:"المواعيد المعتادة", e1msg:"سنعرض الباص مرة أخرى عند عودة الموقع.", tryAgain:"حاولي مرة ثانية", still:"ما زال الموقع غير متاح. نواصل المحاولة.", caption:"مواعيد الباص المعلنة،", note:"هذه هي المواعيد المعلنة، وقد يصل الباص مبكرًا أو متأخرًا.", timesCol:"الأوقات", day:"اليوم", days:["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس"], listening:"أستمع…", nosup:"الصوت غير مدعوم في هذا المتصفح. استخدمي Chrome.",
+        dym:"هل تقصدين: وين الباص؟", yes:"نعم", no:"لا", err:"ما سمعتك. حاولي مرة ثانية.", which:"أي اتجاه؟ اضغطي على أحد الزرين.", mic:"الميكروفون محجوب. اسمحي له من المتصفح، أو اضغطي على أحد الأزرار.", nospeech:"ما سمعت شيئًا. اضغطي على الميكروفون وتكلمي مرة ثانية.", sugG:"مقترح لأن موقعك قريب من مبنى الطالبات. غير صحيح؟ اختاري الاتجاه الآخر.", sugB:"مقترح لأن موقعك قريب من مبنى الطلاب. غير صحيح؟ اختاري الاتجاه الآخر." }
 };
 let lang = "en";
 
@@ -622,6 +647,9 @@ function setLang(l) {
   lang = l; const d = T[l];
   document.documentElement.lang = l; document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
   const set = (sel, v) => document.querySelectorAll(sel).forEach((e) => { e.textContent = v; });
+  document.querySelector(".logo-img").alt = l === "ar" ? "شعار الجامعة" : "University logo";
+  set(".node-g, .dir-g2b .pair i:first-child, .dir-b2g .pair i:last-child", l === "ar" ? "ط" : "G");
+  set(".node-b, .dir-b2g .pair i:first-child, .dir-g2b .pair i:last-child", l === "ar" ? "ب" : "B");
   set(".brand-name", d.brand); set(".brand-sub", d.sub); set("#s1-title", d.s1); set(".lead", d.lead);
   set(".dir-g2b .d-txt small:first-of-type", d.from); set(".dir-b2g .d-txt small:first-of-type", d.from);
   document.querySelectorAll(".d-txt > span").forEach((sp) => { sp.querySelector("small").textContent = sp === sp.parentNode.firstElementChild ? d.from : d.to; });
@@ -650,35 +678,70 @@ function showBox(msg, withButtons) {
   if (withButtons) $("voice-yes").focus();   // keyboard and screen-reader users land on the question
   if (!withButtons) boxTimer = setTimeout(() => { $("voice-box").hidden = true; }, 6000);
 }
-function openByVoice(dir) {
+// ----- Spoken reply (Layer B answers out loud, so her hands and eyes can stay free) -----
+const TTS = window.speechSynthesis;
+function plain(t) { return t.replace(/\{\{(.+?)\|(.+?)\}\}/g, lang === "ar" ? "$2" : "$1"); }   // spoken form of times
+function speak(text) {
+  if (!TTS || !window.SpeechSynthesisUtterance || !text) return;
+  TTS.cancel();
+  const u = new SpeechSynthesisUtterance(plain(text));
+  u.lang = lang === "ar" ? "ar-SA" : "en-US"; u.rate = 0.95;
+  const v = TTS.getVoices().find((x) => x.lang && x.lang.toLowerCase().startsWith(lang));
+  if (v) u.voice = v;
+  TTS.speak(u);
+}
+function stopSpeaking() { if (TTS) TTS.cancel(); }
+function sayBox(msg, withButtons) { showBox(msg, withButtons); speak(msg); }   // show AND say
+function speakStatus() {   // read the answer the screen now shows
+  const dir = DIRECTIONS[app.direction], c = statusContent(app.status, dir), sep = lang === "ar" ? "، " : ". ";
+  const parts = [dir.label, c.heading].concat(c.lines);
+  if (app.status === "unavailable") parts.push(T[lang].e1msg);
+  speak(parts.join(sep));
+}
+function openByVoice(dir, spoken) {
   dir = dir || app.direction;
-  if (!dir) { showBox(T[lang].which); return; }
+  if (!dir) { (spoken ? sayBox : showBox)(T[lang].which); return; }
   $("voice-box").hidden = true; chooseDirection(dir);
+  if (spoken) speakStatus();
 }
 function detectDirection(t) {
-  if (/من\s*(مبنى\s*)?(ال)?(طالبات|بنات)|from\s+(the\s+)?girls/.test(t)) return "g2b";
-  if (/من\s*(مبنى\s*)?(ال)?(طلاب|بنين|شباب)|from\s+(the\s+)?boys/.test(t)) return "b2g";
+  const G = "(?:مبنى\\s*)?(?:ال)?(?:طالبات|بنات)", B = "(?:مبنى\\s*)?(?:ال)?(?:طلاب|بنين|شباب)";
+  // "from ..." wins over "to ...", and "to" must be its own word (the ل inside الطلاب is not "to")
+  if (new RegExp("من\\s*" + G).test(t) || /from\s+(the\s+)?girls/.test(t)) return "g2b";
+  if (new RegExp("من\\s*" + B).test(t) || /from\s+(the\s+)?boys/.test(t)) return "b2g";
+  if (new RegExp("(?:^|\\s)(?:إلى|الى|ل)\\s*" + B).test(t) || /to\s+(the\s+)?boys/.test(t)) return "g2b";
+  if (new RegExp("(?:^|\\s)(?:إلى|الى|ل)\\s*" + G).test(t) || /to\s+(the\s+)?girls/.test(t)) return "b2g";
   return null;
 }
 function handleSpeech(text) {
   const t = text.toLowerCase(); pendingDir = detectDirection(t);
-  if (/bus|باص|الباص|وين|where|متى|when/.test(t)) openByVoice(pendingDir);
-  else showBox(T[lang].dym, true);   // unsure: ask, with Yes and No
+  if (/bus|باص|الباص|وين|where|متى|when/.test(t)) openByVoice(pendingDir, true);
+  else sayBox(T[lang].dym, true);   // unsure: ask out loud, with Yes and No
 }
+let rec = null;
 function startVoice() {
-  if (!SR) { showBox(T[lang].nosup); return; }
-  const r = new SR(); r.lang = lang === "ar" ? "ar-SA" : "en-US"; r.interimResults = false;
-  showBox(T[lang].listening);
-  r.onresult = (e) => handleSpeech(e.results[0][0].transcript);
-  r.onerror = () => showBox(T[lang].err);
-  r.start();
+  stopSpeaking();   // never listen while the app is talking, or the mic hears the app
+  if (!SR) { sayBox(T[lang].nosup); return; }
+  if (rec) { try { rec.abort(); } catch (e) {} }   // only one recognition at a time
+  const r = new SR(); rec = r; r.lang = lang === "ar" ? "ar-SA" : "en-US"; r.interimResults = false;
+  let heard = false;
+  showBox(T[lang].listening); clearTimeout(boxTimer);   // keep "Listening…" on screen while it listens
+  r.onresult = (e) => { heard = true; handleSpeech(e.results[0][0].transcript); };
+  r.onerror = (e) => {
+    heard = true;
+    if (e.error === "aborted") return;
+    sayBox(e.error === "not-allowed" || e.error === "service-not-allowed" ? T[lang].mic
+          : e.error === "no-speech" ? T[lang].nospeech : T[lang].err);
+  };
+  r.onend = () => { if (rec === r) rec = null; if (!heard) sayBox(T[lang].nospeech); };
+  try { r.start(); } catch (e) { showBox(T[lang].err); }
 }
 let lastMic = null;
 document.querySelectorAll("[data-voice]").forEach((b) => b.addEventListener("click", () => { lastMic = b; startVoice(); }));
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("voice-box").hidden) { $("voice-box").hidden = true; if (lastMic) lastMic.focus(); } });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") stopSpeaking(); if (e.key === "Escape" && !$("voice-box").hidden) { $("voice-box").hidden = true; if (lastMic) lastMic.focus(); } });
 document.querySelectorAll("[data-lang-btn]").forEach((b) => b.addEventListener("click", () => setLang(lang === "en" ? "ar" : "en")));
-$("voice-yes").addEventListener("click", () => openByVoice(pendingDir));
-$("voice-no").addEventListener("click", () => { $("voice-box").hidden = true; if (lastMic) lastMic.focus(); });
+$("voice-yes").addEventListener("click", () => openByVoice(pendingDir, true));
+$("voice-no").addEventListener("click", () => { stopSpeaking(); $("voice-box").hidden = true; if (lastMic) lastMic.focus(); });
 function applyVoiceButtons() { $("voice-yes").textContent = T[lang].yes; $("voice-no").textContent = T[lang].no; }
 
 
@@ -706,6 +769,7 @@ function suggestedDirection() {
   if (simLoc === "girls") return "g2b";
   if (simLoc === "boys") return "b2g";
   if (simLoc === "none" || !realPos) return null;
+  if (realPos.acc > NEAR_RADIUS_M) return null;   // location too rough: unsure, so no suggestion
   const dg = distM(realPos, BUILDINGS.g), db = distM(realPos, BUILDINGS.b);
   if (dg <= NEAR_RADIUS_M && dg < db) return "g2b";
   if (db <= NEAR_RADIUS_M && db < dg) return "b2g";
@@ -718,11 +782,13 @@ function updateSuggestion() {
     b.classList.toggle("suggested", on); b.querySelector(".tag").hidden = !on;
   });
   list.prepend(list.querySelector('[data-direction="' + (sug || "g2b") + '"]'));   // suggested one first
+  const note = $("sug-note");   // say WHY it is suggested and how to correct it
+  note.hidden = !sug; note.textContent = sug ? T[lang][sug === "g2b" ? "sugG" : "sugB"] : "";
 }
 function locate() {
   if (simLoc || !navigator.geolocation) return;
   navigator.geolocation.getCurrentPosition(
-    (pos) => { realPos = { lat: pos.coords.latitude, lon: pos.coords.longitude }; updateSuggestion(); },
+    (pos) => { realPos = { lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy }; updateSuggestion(); },
     () => {},   // denied or unavailable: no suggestion, S1 works as normal
     { timeout: 8000, maximumAge: 60000 });
 }
@@ -741,7 +807,11 @@ document.addEventListener("keydown", (e) => {
   if (n >= 1 && n <= 5) setStatus(STATES[n - 1]);
 });
 
-setLang("en");
+// Facilitator start state for a session on a phone (no keyboard): ?status=left etc. Also ?lang=ar.
+const startStatus = new URLSearchParams(location.search).get("status");
+if (STATES.includes(startStatus)) app.status = startStatus;
+if (app.status === "unavailable") app.lastUpdate = Date.now() - 10 * 60000;
+setLang(new URLSearchParams(location.search).get("lang") === "ar" ? "ar" : "en");
 locate();
 updateSuggestion();
 </script>
@@ -751,8 +821,8 @@ updateSuggestion();
   const synthesis = window.speechSynthesis;
   const language = () => document.documentElement.lang === "ar" ? "ar" : "en";
   const labels = {
-    en: { start: "Read this screen aloud", stop: "Stop reading", error: "Audio reading unavailable" },
-    ar: { start: "اقرأ الشاشة بصوت عالٍ", stop: "إيقاف القراءة", error: "القراءة الصوتية غير متاحة" },
+    en: { start: "Read this screen aloud", stop: "Stop reading", error: "Audio reading unavailable", image: "Image", button: "Button", link: "Link", switch: "Switch" },
+    ar: { start: "اقرأ الشاشة بصوت عالٍ", stop: "إيقاف القراءة", error: "القراءة الصوتية غير متاحة", image: "صورة", button: "زر", link: "رابط", switch: "مفتاح تبديل" },
   };
   let current = null;
 
@@ -769,23 +839,44 @@ updateSuggestion();
   }
 
   function speechText(node) {
+    if (!node) return "";
     if (node.nodeType === Node.TEXT_NODE) return node.textContent;
-    if (!(node instanceof HTMLElement) || node.hidden ||
+    if (!(node instanceof Element) || node.hidden ||
         node.getAttribute("aria-hidden") === "true" ||
         getComputedStyle(node).display === "none" ||
         getComputedStyle(node).visibility === "hidden") return "";
 
+    const roles = labels[language()];
+    const role = node.getAttribute("role");
     const labelId = node.getAttribute("aria-labelledby");
-    let spoken = node.matches("button, a")
-      ? (document.getElementById(labelId)?.textContent || node.getAttribute("aria-label"))
-      : "";
-    if (!spoken) {
-      spoken = Array.from(node.childNodes, speechText).join(" ").replace(/\s+/g, " ").trim();
+    const name = document.getElementById(labelId)?.textContent.trim() ||
+      node.getAttribute("aria-label");
+
+    if (node.matches("img") || role === "img") {
+      const description = (name || node.getAttribute("alt") || "").trim();
+      return description ? roles.image + (language() === "ar" ? "، " : ", ") + description + "." : "";
     }
+    if (!(node instanceof HTMLElement)) return "";
+    if (node.matches("label") && document.getElementById(node.htmlFor)?.getAttribute("aria-labelledby") === node.id) {
+      return ""; // The associated switch already announces this label.
+    }
+
+    let type = "";
+    if (role === "switch") type = roles.switch;
+    else if (node.matches("button") || role === "button") type = roles.button;
+    else if (node.matches("a[href]")) type = roles.link;
+
+    let content = type && name ? name : Array.from(node.childNodes, speechText).join(" ");
+    if (role === "switch") {   // say the state too, not only the label
+      const on = node.getAttribute("aria-checked") === "true";
+      content += (language() === "ar" ? "، " : ", ") + (language() === "ar" ? (on ? "مُشغّل" : "مُطفأ") : (on ? "on" : "off"));
+    }
+    const spoken = content.replace(/\s+/g, " ").trim();
     if (!spoken) return "";
-    return node.matches("h1,h2,h3,p,li,button,a,tr") && !/[.!?؟]$/.test(spoken)
-      ? spoken + "."
-      : spoken;
+    const phrase = type ? type + (language() === "ar" ? "، " : ", ") + spoken : spoken;
+    return (type || node.matches("h1,h2,h3,p,li,tr")) && !/[.!?؟]$/.test(phrase)
+      ? phrase + "."
+      : phrase;
   }
 
   reader.addEventListener("click", () => {
