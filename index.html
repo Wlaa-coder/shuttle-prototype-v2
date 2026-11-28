@@ -547,10 +547,17 @@ function rerender() {
   if (app.screen === "s4") renderS4(); else if (app.screen === "e1") renderE1(); else renderS2();
 }
 
+// Simulator for phone sessions (no keyboard): ?change=left&after=20 changes the bus status by itself
+// 20 seconds after the alert is turned on. Declared as Wizard of Oz in the report.
+const qs = new URLSearchParams(location.search);
+const autoChange = qs.get("change"), autoAfter = Math.max(1, Number(qs.get("after")) || 20);
+let autoTimer = null;
 function toggleAlert() {
   app.alertOn = !app.alertOn;
   if (!app.alertOn) app.bannerStatus = null;
   renderAlert();   // only the switch changes, so the status card is not announced again
+  clearTimeout(autoTimer);
+  if (app.alertOn && STATES.includes(autoChange)) autoTimer = setTimeout(() => setStatus(autoChange), autoAfter * 1000);
 }
 
 function refreshStatus() {
